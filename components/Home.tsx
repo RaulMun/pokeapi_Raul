@@ -21,11 +21,11 @@ export function Home({navigation}) {
     }
 
   return (
-
     <View onPress={handleClick}>
-        {list.map((element) => (<Card key={element?.id} data={element} navigation={navigation}/>))}
+    {list.map((element) => (
+      <Card key={element?.id} data={element} navigation={navigation} />
+    ))}
     </View>
-
   );
 }
 

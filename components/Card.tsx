@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import useFetch from '@/hooks/useFetch';
 
 export function Card({data = null, navigation}) {
 
@@ -9,21 +10,35 @@ export function Card({data = null, navigation}) {
     navigation.navigate("Details", {name: data?.url})
     }
 
-  return (
+    const { list, loading, error } = useFetch();
 
-    <TouchableOpacity style = {styles.container} onPress={handleClick}>
-        
-    </TouchableOpacity>
-    
+  return (
+    <View style={styles.mainContainer}>
+      <TouchableOpacity style = {styles.container} onPress={handleClick}>
+          <Text style={styles.text}>prueba</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: 'yellow',
+  },
   container: {
+    alignItems:'center',
+    justifyContent: 'center',
     backgroundColor: "blue",
     height: 50,
-    width: 50,
+    width: 100,
     margin: 5,
+    borderCurve:'circular',
+    borderRadius: 10,
   },
-
+  text: {
+    fontSize: 28,
+    lineHeight: 32,
+    color: '#fff',
+  },
 });
